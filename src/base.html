@@ -40,6 +40,9 @@
     <% (doc.ignore_char - doc.keep).each do |x| %>
     <a <%=href("keep", {'w' => x}, context) %> class="btn btn-sm btn-outline-secondary m-1"><%=h x %></a>
     <% end %>
+    <% doc.keep.each do |x| %>
+    <button class="btn btn-sm btn-primary m-1"><%=h x %></button>
+    <% end %>
     </div>
 </div>
 <h2>残り</h2>
