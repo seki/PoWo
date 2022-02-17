@@ -916,14 +916,38 @@ module PoWo
     break if x == 'アルセウス'
   end
 
+  module_function
+  def make_hist
+    hist = Hash.new(0)
+    count = 0.0
+    All.each do |x|
+      count += x.size
+      x.each_char do |c|
+        hist[c] += 1
+      end
+    end
+    hist.each do |k,v|
+      hist[k] = v / count
+    end
+    hist
+  end
+  Hist = make_hist
+
   class Filter
     def initialize(name_list=DP)
-      @name_list = name_list.sort_by {|x| (x.size > 5 ? 1 : -1) * (x.each_char.to_a.uniq.size * 10 + x.size + rand)}
+      @name_list = name_list.sort_by {|x| weight(x)}
       @ignore = []
       @ignore_char = Set.new
       @keep = Set.new
     end
     attr_reader :ignore, :ignore_char, :keep
+
+    def weight(name)
+      # (name.size > 5 ? 1 : -1) * (name.each_char.to_a.uniq.size * 10 + x.size + rand)
+      (name.size > 5 ? 1 : -1) * (
+        name.each_char.to_a.uniq.inject(0.0) {|s, c| s += Hist[c]; s} * 100 + name.size + rand
+      )
+    end
 
     def reset
       @itnore = []
