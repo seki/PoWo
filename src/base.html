@@ -29,28 +29,27 @@
 <main>
 
 <div class="container">
-  <h2>PoWo</h2>
   <div class="row my-4">
     <div class="col">
       <h3>選んだポケモン</h3>
     <% doc.ignore.each do |x| %>
-      <button  class="btn btn-sm btn-secondary m-1"><%=h x %></button>
+      <button  class="btn btn btn-secondary m-1"><%=h x %></button>
     <% end %>
     </div>
     <div class="col">
-      <h3>文字の集まり</h3>
+      <h3>文字</h3>
       <% (doc.ignore_char - doc.keep).each do |x| %>
-      <a <%=href("keep", {'w' => x}, context) %> class="btn btn-sm btn-outline-secondary m-1"><%=h x %></a>
+      <a <%=href("keep", {'w' => x}, context) %> class="btn btn btn-outline-secondary m-1"><%=h x %></a>
       <% end %>
       <% doc.keep.each do |x| %>
-      <button class="btn btn-sm btn-primary m-1"><%=h x %></button>
+      <button class="btn btn btn-primary m-1"><%=h x %></button>
       <% end %>
       </div>
   </div>
   <h3>候補</h3>
   <div class="container">
   <% to_a.each do |x| %>
-    <a <%=href("ignore", {'w' => x}, context) %> class="btn btn-sm btn-outline-secondary m-1"><%=h x %></a>
+    <a <%=href("ignore", {'w' => x}, context) %> class="btn btn btn-outline-secondary m-1"><%=h x %></a>
   <% end %>
   </div>
 </div>
