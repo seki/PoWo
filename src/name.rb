@@ -955,13 +955,22 @@ module PoWo
       @keep = Set.new
     end
 
-    def add_ignore(name)
+    def add_pokemon(name)
       @ignore << name
       @ignore_char += name.each_char.to_a
     end
 
-    def add_keep(str)
+    def delete_pokemon(name)
+      @ignore.delete(name)
+      @ignore_char = Set.new(@ignore.map {|x| x.each_char.to_a}.flatten)
+    end
+
+    def add_letter(str)
       @keep += str.each_char.to_a
+    end
+
+    def delete_letter(str)
+      @keep -= str.each_char.to_a
     end
 
     def to_a
