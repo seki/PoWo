@@ -68,7 +68,7 @@ module PoWo
       doc.to_a
     end
     
-    def do_ignore(context, params)
+    def do_add_pokemon(context, params)
       name = normalize_string(params['w'])
       @doc.add_pokemon(name)
     end
@@ -78,7 +78,7 @@ module PoWo
       @doc.delete_pokemon(name)
     end
 
-    def do_keep(context, params)
+    def do_add_letter(context, params)
       ch = normalize_string(params['w'])
       @doc.add_letter(ch)
     end

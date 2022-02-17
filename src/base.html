@@ -39,7 +39,7 @@
     <div class="col">
       <h3>文字</h3>
       <% (doc.ignore_char - doc.keep).each do |x| %>
-      <a <%=href("keep", {'w' => x}, context) %> class="btn btn-outline-secondary m-1"><%=h x %></a>
+      <a <%=href("add_letter", {'w' => x}, context) %> class="btn btn-outline-secondary m-1"><%=h x %></a>
       <% end %>
       <% doc.keep.each do |x| %>
       <a <%=href("delete_letter", {'w' => x}, context) %> class="btn btn-primary m-1"><%=h x %></a>
@@ -49,7 +49,7 @@
   <h3>候補</h3>
   <div class="container">
   <% to_a.each do |x| %>
-    <a <%=href("ignore", {'w' => x}, context) %> class="btn btn-outline-secondary m-1"><%=h x %></a>
+    <a <%=href("add_pokemon", {'w' => x}, context) %> class="btn btn-outline-secondary m-1"><%=h x %></a>
   <% end %>
   </div>
 </div>
