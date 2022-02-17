@@ -918,7 +918,7 @@ module PoWo
 
   class Filter
     def initialize(name_list=DP)
-      @name_list = name_list.sort_by {|x| - (x.each_char.to_a.uniq.size * 10 + x.size + rand)}
+      @name_list = name_list.sort_by {|x| (x.size > 5 ? 1 : -1) * (x.each_char.to_a.uniq.size * 10 + x.size + rand)}
       @ignore = []
       @ignore_char = Set.new
       @keep = Set.new
